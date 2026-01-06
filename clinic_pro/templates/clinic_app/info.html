@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    <title>Info</title>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <h1>Appointment Information</h1>
+        NAME: {{ appointment.patient_name }} <br>
+        EMAIL: {{ appointment.patient_email }} <br>
+        AGE: {{ appointment.patient_age }} <br>
+        ADDRESS: {{ appointment.patient_address }} <br>
+        GENDER: {{ appointment.patient_gender }} <br>
+        PHONE: {{ appointment.patient_phone }} <br>
+        APPOINTMENT DATE: {{ appointment.appointment_date }} <br>
+        APPOINTMENT TIME: {{ appointment.appointment_time }} <br>
+        REASON: {{ appointment.reason }} <br>
+        {% if appointment.recent_report %}
+            <a href="{{ appointment.recent_report.url }}">Show Report</a> <br>
+            <a href="{{ appointment.recent_report.url }}" download>Download Report</a>
+        {% else %}
+            <h1>NO REPORT AVAILABLE</h1>
+        {% endif %}
+        
+    </div>
+{% endblock %}
+    
