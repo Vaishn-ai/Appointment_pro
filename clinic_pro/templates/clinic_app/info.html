@@ -16,10 +16,10 @@
         PHONE: {{ appointment.patient_phone }} <br>
         APPOINTMENT DATE: {{ appointment.appointment_date }} <br>
         APPOINTMENT TIME: {{ appointment.appointment_time }} <br>
-        REASON: {{ appointment.reason }} <br>
+        REASON: {{ appointment.reson }} <br>
         {% if appointment.recent_report %}
-            <a href="{{ appointment.recent_report.url }}">Show Report</a> <br>
-            <a href="{{ appointment.recent_report.url }}" download>Download Report</a>
+            <a href="{{ appointment.recent_report.url }}" alt="File not available">Show Report</a> <br>
+            <a href="{{ appointment.recent_report.url }}" alt="can't download" download >Download Report</a>
         {% else %}
             <h1>NO REPORT AVAILABLE</h1>
         {% endif %}

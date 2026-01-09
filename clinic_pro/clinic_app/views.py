@@ -22,7 +22,17 @@ def show_appointments(request):
     name = request.GET.get('patient_name')
     date = request.GET.get('date')
     time = request.GET.get('time')
-    print(name, date, time)
+    sort = request.GET.get('sort')
+    if name:
+        appointments = appointments.filter(patient_name__icontains = name)
+    if date:
+        appointments = appointments.filter(appointment_date = date)
+    if time:
+        appointments = appointments.filter(appointmnet_time = time)
+    if sort:
+        appointments = appointments.order_by(sort)
+    
+
     template_name="clinic_app/show.html"
     context={'appointments' : appointments}
     return render(request, template_name, context)

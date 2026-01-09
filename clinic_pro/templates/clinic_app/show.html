@@ -1,6 +1,27 @@
 {% extends 'base.html' %}
 
+{% block title %}
+    <title> Show Appointments </title>
+{% endblock %}
+
 {% block content %}
+
+<br><br>
+<form method="get">
+    <input name="patient_name" placeholder="Enter name"/>
+    <input name="date" type="date" placeholder="Enter Date"/>
+    <input name="time" type="time" placeholder="Enter time"/>
+    <select name="sort">
+        <option value="patient_name">Ascending</option>
+        <option value="-patient_name">Descending</option>
+    </select>
+    <button type="submit">Submit</button><br><br>
+</form>
+
+
+
+
+
 <table class="table" border="2px">
     <thead>
         <tr>

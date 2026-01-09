@@ -9,5 +9,5 @@ urlpatterns = [
     path('info-appointment/<int:pk>/', info_appointment, name='info_appointment_urls'),
     path('update-appointment/<int:pk>/', update_appointment, name='update_appointment_urls'),
     path('delete-appointment/<int:pk>/', delete_appointment, name='delete_appointment_urls'),
-    path('home/', home, name='home_urls'),
+    path('', home, name='home_urls'),
 ]
