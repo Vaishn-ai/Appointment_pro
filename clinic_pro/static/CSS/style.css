@@ -1,0 +1,101 @@
+/* Full page center */
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    background: linear-gradient(135deg, #f6f9ff, #eef2ff);
+    font-family: Arial, sans-serif;
+}
+
+/* Form Card */
+.form-card {
+    width: 100%;
+    max-width: 550px;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 14px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+    border: 1px solid #e6e6e6;
+}
+
+/* Title */
+.form-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #222;
+}
+
+/* Crispy Form Inputs */
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cfcfcf;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.2s ease-in-out;
+}
+
+/* Focus effect */
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+    border-color: #4a70ff;
+    box-shadow: 0px 0px 6px rgba(74, 112, 255, 0.4);
+}
+
+/* Labels */
+.booking-form label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: inline-block;
+    color: #333;
+}
+
+/* Buttons */
+.btn-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn {
+    flex: 1;
+    padding: 11px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-primary {
+    background: #4a70ff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2f55ff;
+}
+
+.btn-secondary {
+    background: #eeeeee;
+    color: #333;
+}
+
+.btn-secondary:hover {
+    background: #dcdcdc;
+}
+
+/* Make textarea resize nice */
+.booking-form textarea {
+    resize: none;
+    min-height: 90px;
+}

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-z07cgc=p)7f6snc@um6$=foa75v+r@q!vwrt__ap4ttz_9evgk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -62,7 +63,7 @@ ROOT_URLCONF = 'clinic_pro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [  os.path.join( BASE_DIR, 'templates'  )  ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -82,11 +83,8 @@ WSGI_APPLICATION = 'clinic_pro.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clinic_db',
-        'USER': 'root',
-        'PASSWORD': 'v12avi.81',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME':  BASE_DIR / 'db.sqlite3'
     }
 }
 

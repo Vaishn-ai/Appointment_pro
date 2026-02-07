@@ -1,49 +1,80 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title> Show Appointments </title>
+<title>Show Appointments</title>
 {% endblock %}
 
 {% block content %}
 
-<br><br>
-<form method="get">
-    <input name="patient_name" placeholder="Enter name"/>
-    <input name="date" type="date" placeholder="Enter Date"/>
-    <input name="time" type="time" placeholder="Enter time"/>
-    <select name="sort">
-        <option value="patient_name">Ascending</option>
-        <option value="-patient_name">Descending</option>
-    </select>
-    <button type="submit">Submit</button><br><br>
-</form>
+<div class="container mt-4">
 
+    <h2 class="text-center mb-4">📋 Appointment Records</h2>
 
+    <div class="card shadow-sm p-3 mb-4">
+        <form method="get" class="row g-3">
 
+            <div class="col-md-3">
+                <input type="text" name="patient_name" class="form-control" placeholder="Enter name">
+            </div>
 
+            <div class="col-md-3">
+                <input type="date" name="date" class="form-control">
+            </div>
 
-<table class="table" border="2px">
-    <thead>
-        <tr>
-        <th scope="col">NAME</th>
-        <th scope="col">PHONE NUMBER</th>
-        <th scope="col"> APPOINTMENT DATE</th>
-        <th scope="col">APPOINTMENT TIME</th>
-        <th colspan="3">Action</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for appointment in appointments %}
-    <tr>
-        <td>{{ appointment.patient_name }}</td>
-        <td>{{ appointment.patient_phone }}</td>
-        <td>{{ appointment.appointment_date }}</td>
-        <td>{{ appointment.appointment_time }}</td>
-        <td><a href="{% url 'info_appointment_urls' appointment.id %}">Info</a></td>
-        <td><a href="{% url 'update_appointment_urls' appointment.id %}">Update</a></td>
-        <td><a href="{% url 'delete_appointment_urls' appointment.id %}">Delete</a></td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+            <div class="col-md-2">
+                <input type="time" name="time" class="form-control">
+            </div>
+
+            <div class="col-md-2">
+                <select name="sort" class="form-select">
+                    <option value="patient_name">Ascending</option>
+                    <option value="-patient_name">Descending</option>
+                </select>
+            </div>
+
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary w-100">Search</button>
+            </div>
+
+        </form>
+    </div>
+
+   
+    <div class="card shadow-lg">
+        <div class="table-responsive">
+            <table class="table table-hover table-striped mb-0">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for appointment in appointments %}
+                    <tr>
+                        <td>{{ appointment.patient_name }}</td>
+                        <td>{{ appointment.patient_phone }}</td>
+                        <td>{{ appointment.appointment_date }}</td>
+                        <td>{{ appointment.appointment_time }}</td>
+
+                        <td class="text-center">
+                            <a href="{% url 'info_appointment_urls' appointment.id %}" class="btn btn-info btn-sm">Info</a>
+                            <a href="{% url 'update_appointment_urls' appointment.id %}" class="btn btn-warning btn-sm">Update</a>
+                            <a href="{% url 'delete_appointment_urls' appointment.id %}" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+
+</div>
+
 {% endblock %}

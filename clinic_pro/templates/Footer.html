@@ -3,41 +3,197 @@
 
     <!-- Hospital Info -->
     <div class="footer-section">
-      <h3>CarePlus Hospital</h3>
+      <h3>🏥 CleveLand Hospital</h3>
       <p>
-        Providing quality healthcare & medical facilities.
+        Providing trusted healthcare services with experienced doctors,
+        modern facilities and 24/7 support.
       </p>
+
+      <div class="footer-social">
+        <a href="#" class="social-btn">🌐</a>
+        <a href="#" class="social-btn">📘</a>
+        <a href="#" class="social-btn">📸</a>
+        <a href="#" class="social-btn">💼</a>
+      </div>
     </div>
 
     <!-- Quick Links -->
     <div class="footer-section">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Doctors</a></li>
-        <li><a href="#">Departments</a></li>
-        <li><a href="#">Appointments</a></li>
+        <li><a href="{% url 'home_urls' %}">🏠 Home</a></li>
+        <li><a href="{% url 'create_appointment_urls' %}">📝 Register</a></li>
+
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'logout_user_urls' %}">🚪 Logout</a></li>
+        {% else %}
+          <li><a href="{% url 'login_user_urls' %}">🔐 Login</a></li>
+          <li><a href="{% url 'register_form_urls' %}">🧾 Signup</a></li>
+        {% endif %}
       </ul>
     </div>
 
-    <!-- Contact Info -->
+    <!-- Contact -->
     <div class="footer-section">
       <h4>Contact Us</h4>
-      <p>📍 123 Health Street, Pune, India</p>
+      <p>📍 Pune, Maharashtra, India</p>
       <p>📞 +91 98765 43210</p>
-      <p>✉ sanjeevni@hospital.com</p>
+      <p>✉️ sanjeevani@hospital.com</p>
+      <p>🕒 Mon - Sun : 24/7</p>
     </div>
 
     <!-- Emergency -->
     <div class="footer-section emergency">
-      <h4>Emergency</h4>
-      <p class="emergency-number">🚑 24/7 Helpline</p>
-      <p class="emergency-phone">+91 11223 44556</p>
+      <h4>🚑 Emergency</h4>
+      <p class="emergency-number">24/7 Helpline</p>
+      <p class="emergency-phone">📞 +91 11223 44556</p>
+
+      <a href="tel:+911122344556" class="emergency-btn">Call Now</a>
     </div>
 
   </div>
 
   <div class="footer-bottom">
-    <p>© 2026 Sanjeevni Hospital. All Rights Reserved.</p>
+    <p>© 2026 CleveLand Hospital. All Rights Reserved.</p>
   </div>
 </footer>
+
+<style>
+
+
+.hospital-footer{
+    background: linear-gradient(90deg, #0f172a, #1e293b);
+    color: #e2e8f0;
+    padding: 50px 20px 18px;
+    margin-top: 60px;
+}
+
+.footer-container{
+    max-width: 1200px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+
+.footer-section h3,
+.footer-section h4{
+    color: white;
+    margin-bottom: 12px;
+    font-weight: 800;
+}
+
+.footer-section p{
+    font-size: 14px;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+
+.footer-section ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li{
+    margin: 10px 0;
+}
+
+.footer-section ul li a{
+    text-decoration: none;
+    color: #cbd5e1;
+    font-weight: 600;
+    transition: 0.3s;
+    display: inline-block;
+}
+
+.footer-section ul li a:hover{
+    color: #38bdf8;
+    transform: translateX(4px);
+}
+
+
+.footer-social{
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+.social-btn{
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.social-btn:hover{
+    transform: translateY(-3px);
+    background: rgba(56,189,248,0.25);
+    box-shadow: 0 10px 25px rgba(56,189,248,0.25);
+}
+
+.footer-section.emergency{
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.25);
+    padding: 18px;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.emergency-number{
+    font-weight: 800;
+    color: #fca5a5;
+    margin-top: 10px;
+}
+
+.emergency-phone{
+    font-size: 16px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 14px;
+}
+
+.emergency-btn{
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    background: #ef4444;
+    color: white;
+    padding: 10px 14px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.emergency-btn:hover{
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(239,68,68,0.35);
+}
+
+
+.footer-bottom{
+    margin-top: 30px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 14px;
+    text-align: center;
+}
+
+.footer-bottom p{
+    margin: 0;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+</style>

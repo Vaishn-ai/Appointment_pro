@@ -1,17 +1,72 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 
-{% block title %}
-    <title>FORM - title</title>
+{% block content %}
+
+<div class="container mt-5">
+    <div class="card shadow-lg p-4">
+        <h2 class="text-center mb-4">📅 Booking Form</h2>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+
+            <div class="text-center mt-3">
+                <button type="submit" class="btn btn-primary px-4">Submit</button>
+                <button type="reset" class="btn btn-secondary px-4">Reset</button>
+            </div>
+        </form>
+
+    </div>
+</div>
+
 {% endblock %}
 
-{% block content %}
-        <h2>Booking form</h2>
-        <form method="post" enctype="multipart/form-data" id="bookingform">
-            {% csrf_token %}
-            {{ form | crispy }}
-            <input type="submit" />
-            <input type="reset" />
-        </form>
-{% endblock %}
-# End of file clinic_pro/templates/clinic_app/form.html
+<style>
+    .page-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+.form-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 600px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.form-title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+}
+
+.btn-group {
+    text-align: center;
+}
+
+.btn-primary {
+    background: #007bff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+.btn-secondary {
+    background: gray;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+}
+
+</style>

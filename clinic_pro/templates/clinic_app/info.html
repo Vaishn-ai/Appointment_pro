@@ -1,29 +1,283 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %}
-    <title>Info</title>
+<title>Appointment Info</title>
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h1>Appointment Information</h1>
-        NAME: {{ appointment.patient_name }} <br>
-        EMAIL: {{ appointment.patient_email }} <br>
-        AGE: {{ appointment.patient_age }} <br>
-        ADDRESS: {{ appointment.patient_address }} <br>
-        GENDER: {{ appointment.patient_gender }} <br>
-        PHONE: {{ appointment.patient_phone }} <br>
-        APPOINTMENT DATE: {{ appointment.appointment_date }} <br>
-        APPOINTMENT TIME: {{ appointment.appointment_time }} <br>
-        REASON: {{ appointment.reson }} <br>
+
+<section class="info-page">
+  <div class="info-container">
+
+    <div class="info-card">
+
+      <div class="info-header">
+        <h1>🧾 Appointment Information</h1>
+        <p>Details of the patient appointment record</p>
+      </div>
+
+      <div class="info-grid">
+
+        <div class="info-row">
+          <span class="label">Name</span>
+          <span class="value">{{ appointment.patient_name }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Email</span>
+          <span class="value">{{ appointment.patient_email }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Age</span>
+          <span class="value">{{ appointment.patient_age }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Address</span>
+          <span class="value">{{ appointment.patient_address }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Gender</span>
+          <span class="value">{{ appointment.patient_gender }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Phone</span>
+          <span class="value">{{ appointment.patient_phone }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Appointment Date</span>
+          <span class="value">{{ appointment.appointment_date }}</span>
+        </div>
+
+        <div class="info-row">
+          <span class="label">Appointment Time</span>
+          <span class="value">{{ appointment.appointment_time }}</span>
+        </div>
+
+        <div class="info-row full-row">
+          <span class="label">Reason</span>
+          <span class="value">{{ appointment.reson }}</span>
+        </div>
+
+      </div>
+
+      <!-- Report Section -->
+      <div class="report-box">
+        <h3>📄 Recent Report</h3>
+
         {% if appointment.recent_report %}
-            <a href="{{ appointment.recent_report.url }}" alt="File not available">Show Report</a> <br>
-            <a href="{{ appointment.recent_report.url }}" alt="can't download" download >Download Report</a>
+          <div class="report-actions">
+            <a class="btn-report view" href="{{ appointment.recent_report.url }}" target="_blank">
+              👁 View Report
+            </a>
+
+            <a class="btn-report download" href="{{ appointment.recent_report.url }}" download>
+              ⬇ Download Report
+            </a>
+          </div>
         {% else %}
-            <h1>NO REPORT AVAILABLE</h1>
+          <p class="no-report">⚠ No report available</p>
         {% endif %}
-        
+      </div>
+
+      <div class="back-btn-box">
+        <a href="{% url 'show_appointment_urls' %}" class="back-btn">← Back</a>
+      </div>
+
     </div>
+
+  </div>
+</section>
+
+
+<style>
+    /* ✅ Info Page Layout */
+.info-page{
+    min-height: 90vh;
+    padding: 40px 15px;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Container */
+.info-container{
+    width: 100%;
+    max-width: 1000px;
+}
+
+/* Card */
+.info-card{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 18px;
+    padding: 30px 24px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+    backdrop-filter: blur(12px);
+}
+
+/* Header */
+.info-header{
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.info-header h1{
+    color: white;
+    font-weight: 900;
+    font-size: 28px;
+    margin-bottom: 6px;
+}
+
+.info-header p{
+    color: #cbd5e1;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Grid */
+.info-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 15px;
+}
+
+.info-row{
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px;
+    padding: 14px 16px;
+    transition: 0.3s ease;
+}
+
+.info-row:hover{
+    transform: translateY(-2px);
+    background: rgba(56,189,248,0.10);
+    border-color: rgba(56,189,248,0.25);
+}
+
+/* Full row (Reason) */
+.full-row{
+    grid-column: span 2;
+}
+
+/* Label & Value */
+.label{
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    color: #93c5fd;
+    margin-bottom: 6px;
+    letter-spacing: 0.4px;
+}
+
+.value{
+    font-size: 15px;
+    font-weight: 700;
+    color: #e2e8f0;
+    word-break: break-word;
+}
+
+/* Report box */
+.report-box{
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+}
+
+.report-box h3{
+    color: white;
+    font-size: 18px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+/* Report Buttons */
+.report-actions{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn-report{
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: 0.3s ease;
+    display: inline-block;
+}
+
+.btn-report.view{
+    background: rgba(56,189,248,0.9);
+    color: #0f172a;
+}
+
+.btn-report.view:hover{
+    background: rgba(56,189,248,1);
+    transform: translateY(-2px);
+}
+
+.btn-report.download{
+    background: rgba(34,197,94,0.9);
+    color: #0f172a;
+}
+
+.btn-report.download:hover{
+    background: rgba(34,197,94,1);
+    transform: translateY(-2px);
+}
+
+.no-report{
+    color: #fca5a5;
+    font-weight: 800;
+    margin: 0;
+}
+
+/* Back button */
+.back-btn-box{
+    margin-top: 22px;
+    text-align: center;
+}
+
+.back-btn{
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.back-btn:hover{
+    background: rgba(255,255,255,0.14);
+    transform: translateY(-2px);
+}
+
+/* Responsive */
+@media(max-width: 768px){
+    .info-grid{
+        grid-template-columns: 1fr;
+    }
+
+    .full-row{
+        grid-column: span 1;
+    }
+}
+
+</style>
 {% endblock %}
+
     
