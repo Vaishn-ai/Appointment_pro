@@ -26,7 +26,9 @@ SECRET_KEY = 'django-insecure-z07cgc=p)7f6snc@um6$=foa75v+r@q!vwrt__ap4ttz_9evgk
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['Vaishn-ai.pythonanywhere.com']
+ALLOWED_HOSTS = ['vaishn-ai.pythonanywhere.com','vaishn001.pythonanywhere.com','*']
+
+
 
 
 # Application definition
